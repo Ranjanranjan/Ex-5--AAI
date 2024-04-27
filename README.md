@@ -1,19 +1,21 @@
-<H3>NAME: Ranjan K</H3>
-<H3>REGISTER NO.: 212222230116</H3>
+<H3>Name :Ranjan k</H3>
+<H3>Register no : 212222230116</H3>
 <H3>EX. NO.5</H3>
-<H3>DATE:22-04-24</H3>
 <H1 ALIGN =CENTER> Implementation of Kalman Filter</H1>
 <H3>Aim:</H3> To Construct a Python Code to implement the Kalman filter to predict the position and velocity of an object.
 <H3>Algorithm:</H3>
-Step 1: Define the state transition model F, the observation model H, the process noise covariance Q, the measurement noise covariance R, the initial state estimate x0, and the initial error covariance P0.<BR>
-Step 2:  Create a KalmanFilter object with these parameters.<BR>
-Step 3: Simulate the movement of the object for a number of time steps, generating true states and measurements. <BR>
-Step 3: For each measurement, predict the next state using kf.predict().<BR>
-Step 4: Update the state estimate based on the measurement using kf.update().<BR>
-Step 5: Store the estimated state in a list.<BR>
-Step 6: Plot the true and estimated positions.<BR>
+
+`Step 1:` Define the state transition model F, the observation model H, the process noise covariance Q, the measurement noise covariance R, the initial state estimate x0, and the initial error covariance P0.<BR>
+`Step 2:`  Create a KalmanFilter object with these parameters.<BR>
+`Step 3:` Simulate the movement of the object for a number of time steps, generating true states and measurements. <BR>
+`Step 4:` For each measurement, predict the next state using kf.predict().<BR>
+`Step 5:` Update the state estimate based on the measurement using kf.update().<BR>
+`Step 6:` Store the estimated state in a list.<BR>
+`Step 7:` Plot the true and estimated positions.<BR>
+
 <H3>Program:</H3>
-```
+
+```py
 import numpy as np
 class KalmanFilter:
   def __init__ (self,F,H,Q,R,x0,P0):
@@ -35,9 +37,9 @@ class KalmanFilter:
     S = np.dot(np.dot(self.H, self.P),self.H.T) + self.R
     K = np.dot(np.dot(self.P, self.H.T), np.linalg.inv(S))
     self.x = self.x + np.dot(K, y)
+```
 
-```
-```
+```py
 # Example usage:
 # Assume we want to track the position and velocity of a moving object
 # with a state vector of [position, velocity] and a single scalar measurement
@@ -50,7 +52,8 @@ R = np.array([[1]]) # measurement noise covariance
 x0 = np.array([0, 0]) # initial state estimate
 P0 = np.diag([1, 1]) # initial error covariance
 ```
-```
+
+```py
 kf = KalmanFilter(F,H,Q,R,x0,P0)
 
 true_states=[]
@@ -67,7 +70,7 @@ for z in measurements:
     est_states.append(kf.x)
 ```
 
-```
+```py
 # plot the true and estimated positions
 import matplotlib.pyplot as plt
 plt.plot([s[0] for s in true_states], label='true')
@@ -75,13 +78,15 @@ plt.plot([s[0] for s in est_states], label='estimate')
 plt.legend()
 plt.show()
 ```
-##Output:
-```
-![image](https://github.com/Ranjanranjan/Ex-5--AAI/assets/130027697/5baf5b24-9a27-4bac-ada1-589dd81612fc)
-```
-##Results:
-```
-Thus, Kalman filter is implemented to predict the next position and   velocity in Python
-```
+
+<H3>Output:</H3>
+
+![Screenshot 2024-04-27 103109](https://github.com/Ranjanranjan/Ex-5--AAI/assets/130027697/96c4b7b2-66d5-4b0a-aa70-4c865eedb821)
+
+
+
+
+<H3>Results:</H3>
+Thus, Kalman filter is implemented to predict the next position and velocity in Python
 
 
